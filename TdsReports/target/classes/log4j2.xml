@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+	<Properties>
+		<Property name="LOG_DIR">/applogs/tdsreports</Property>
+		<Property name="FILE_PREFIX">tdsreports</Property>
+	</Properties>
+	<Appenders>
+		<Console name="consoleAppender" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d %p %c{1.} [%t] %m%n %throwable"/>
+		</Console>
+		<RollingRandomAccessFile
+			name="rollingRandomAccessFileAppender"
+			fileName="${LOG_DIR}/${FILE_PREFIX}.log"
+			filePattern="${LOG_DIR}/archived/${FILE_PREFIX}.%d{yyyy-MM-dd}.%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d %p %c{1.} [%t] %m%n %throwable</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10000" />
+		</RollingRandomAccessFile>
+	</Appenders>
+	<Loggers>
+		<AsyncLogger name="org.hibernate" level="ERROR" additivity="false"></AsyncLogger>
+		<AsyncLogger name="org.hibernate.sql" level="ERROR"
+			additivity="false"></AsyncLogger>
+		<AsyncLogger name="org.springframework" level="ERROR"
+			additivity="false"></AsyncLogger>
+		<AsyncLogger name="org.apache.kafka" level="ERROR"
+			additivity="false"></AsyncLogger>
+		<AsyncLogger name="ingov.itd.iec" level="DEBUG" additivity="false">
+			<AppenderRef ref="rollingRandomAccessFileAppender" />
+		</AsyncLogger>
+		<Root level="INFO">
+			<AppenderRef ref="rollingRandomAccessFileAppender" />
+		</Root>
+	</Loggers>
+</Configuration>

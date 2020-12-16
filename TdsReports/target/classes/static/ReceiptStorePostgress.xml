@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-5.0.dtd">
+
+<hibernate-mapping>
+
+<query name="maxReceiptId">
+		<![CDATA[ select max(receiptId)
+		FROM TdsReceiptAll
+		]]>
+</query>
+<query name="InwwardedCount">
+		<![CDATA[ select count(*)
+		FROM TdsReceiptAll
+		WHERE tds26asOutId > ?1 and tds26asOutId < ?2
+	 ]]>
+	</query>
+	
+	<query name = "SumarisedCount">
+	<![CDATA[ select count(*)
+		FROM TdsReceiptAllUnq
+		WHERE receiptId > ?1 and receiptId < ?2
+	 ]]>
+	</query>
+	
+	
+	
+	
+	
+</hibernate-mapping>

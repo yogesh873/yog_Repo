@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-5.0.dtd">
+
+<hibernate-mapping>
+
+<query name="minOutId">
+		<![CDATA[ select min(tds26asOutId)
+		FROM Tds26asOutbndStg
+		]]>
+</query>
+
+<query name="maxOutId">
+		<![CDATA[ select max(tds26asOutId)
+		FROM Tds26asOutbndStg
+		]]>
+</query>
+<query name="StgCount">
+		<![CDATA[ select count(*)
+		FROM Tds26asOutbndStg
+		WHERE tds26asOutId > ?1 and tds26asOutId < ?2
+	 ]]>
+	</query>
+	
+	
+	
+	
+	<!-- check the pan for summarisation -->
+	
+	
+</hibernate-mapping>

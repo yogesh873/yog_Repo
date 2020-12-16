@@ -1,0 +1,7 @@
+Wed Dec 16 14:42:24 IST 2020
+sum of end offset in tds inwarding app is: 27633721
+sum of lags in tds inwarding app is: 0
+sum of end offset in tds sink topic is: 429047521
+sum of lag on Tds sink  topic is: 0
+sum of end offset in summarisation-topic is: 1847612234
+sum of lag in summarisation-topic is: 0
